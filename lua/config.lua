@@ -14,3 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
 
+-- enable 24-bit color
+vim.g.termuicolors = true
+
