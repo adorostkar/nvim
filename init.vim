@@ -2,6 +2,7 @@ lua require('config')
 
 " enable line numbering
 set nu
+set relativenumber
 
 set hlsearch
 set incsearch
@@ -27,3 +28,13 @@ set undolevels=1000
 set undoreload=10000
 set history=5000
 
+" sourcing vimrc in git repos
+let git_path = system("git rev-parse --show-toplevel 2>/dev/null")
+let git_vimrc = substitute(git_path, '\n', '', '') . "/.git/vimrc"
+if !empty(glob(git_vimrc))
+    exec ":source " . git_vimrc
+endif
+
+" Highlight trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
