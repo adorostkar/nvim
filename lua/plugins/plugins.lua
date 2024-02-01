@@ -1,4 +1,78 @@
 return {
+    -- E X P E R I M E N T S
+    -- { 'mhinz/vim-startify' },
+    -- { 'nvimtools/none-ls.nvim' },
+    -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
+    -- {
+    --     'windwp/nvim-autopairs',
+    --     event = "InsertEnter",
+    --     opts = {} -- this is equalent to setup({}) function
+    -- },
+    -- { -- progress provider
+    --     'j-hui/fidget.nvim',
+    --     config = function()
+    --         require('fidget').setup()
+    --     end,
+    -- },
+    -- {
+    --     "folke/which-key.nvim",
+    --     event = "VeryLazy",
+    --     init = function()
+    --         vim.o.timeout = true
+    --         vim.o.timeoutlen = 300
+    --     end,
+    --     opts = {
+    --         -- your configuration comes here
+    --         -- or leave it empty to use the default settings
+    --         -- refer to the configuration section below
+    --     }
+    -- },
+    -- {
+    --      'echasnovski/mini.trailspace', version = false,
+    --      config = function()
+    --          require('mini.trailspace').setup()
+    --      end,
+    -- },
+    -- {
+    --     "folke/todo-comments.nvim",
+    --     dependencies = { "nvim-lua/plenary.nvim" },
+    --     opts = {
+    --         -- your configuration comes here
+    --         -- or leave it empty to use the default settings
+    --         -- refer to the configuration section below
+    --     }
+    -- },
+    -- E N D
+    { -- does same thing as fidget
+        "rcarriga/nvim-notify",
+        config = function()
+            require('notify').setup()
+            vim.notify = require('notify')
+        end,
+    },
+    { -- autocompletion framework for different sources
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'FelipeLema/cmp-async-path',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua'
+        },
+        config = function()
+            require('cmp').setup({
+                sources = {
+                    { name = 'async_path' },
+                    { name = 'nvim_lsp' },
+                    { name = 'nvim_lua' },
+                },
+            })
+        end,
+    },
+    { 
+        'echasnovski/mini.indentscope', version = false,
+        config = function()
+            require('mini.indentscope').setup()
+        end
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -35,7 +109,6 @@ return {
             'junegunn/fzf',
         },
     },
-    -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
     { 'tpope/vim-surround', },
     { 'junegunn/fzf', },
     { 
@@ -77,5 +150,14 @@ return {
             ensure_installed = {
             }
         }
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+        }
+    },
+    {
+        "neovim/nvim-lspconfig",
     },
 }
