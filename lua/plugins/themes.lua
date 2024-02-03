@@ -11,7 +11,6 @@ local M = {
         lazy = false,
         priority = 1000,
         config = function()
-            -- vim.cmd([[colorscheme onedark]])
             vim.cmd([[colorscheme catppuccin]])
         end,
     },

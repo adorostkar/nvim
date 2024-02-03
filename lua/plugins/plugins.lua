@@ -8,12 +8,6 @@ return {
     --     event = "InsertEnter",
     --     opts = {} -- this is equalent to setup({}) function
     -- },
-    -- { -- progress provider
-    --     'j-hui/fidget.nvim',
-    --     config = function()
-    --         require('fidget').setup()
-    --     end,
-    -- },
     -- {
     --     "folke/which-key.nvim",
     --     event = "VeryLazy",
@@ -41,6 +35,12 @@ return {
     --         -- or leave it empty to use the default settings
     --         -- refer to the configuration section below
     --     }
+    -- },
+    -- { -- progress provider
+    --     'j-hui/fidget.nvim', 
+    --     config = function()
+    --         require('fidget').setup()
+    --     end,
     -- },
     -- E N D
     { -- does same thing as fidget
@@ -88,6 +88,12 @@ return {
         end
     },
     {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end,
+    },
+    {
         'skywind3000/asyncrun.vim',
     },
     { -- not sure if needed. Trying to replicate vim stuff
@@ -109,7 +115,17 @@ return {
             'junegunn/fzf',
         },
     },
-    { 'tpope/vim-surround', },
+    -- { 'tpope/vim-surround', },
+    {
+        'kylechui/nvim-surround',
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end,
+    },
     { 'junegunn/fzf', },
     { 
         'junegunn/fzf.vim',
@@ -148,14 +164,39 @@ return {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {
+                "clangd",
+                "luau-lsp",
+                "bash-language-server",
+                "clang-format",
             }
-        }
+        },
+        config = function()
+            require('mason').setup()
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "williamboman/mason.nvim",
-        }
+        },
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup()
+
+            require("mason-lspconfig").setup_handlers {
+                -- The first entry (without a key) will be the default handler
+                -- and will be called for each installed server that doesn't have
+                -- a dedicated handler.
+                function (server_name) -- default handler (optional)
+                    require("lspconfig")[server_name].setup {}
+                end,
+                -- Next, you can provide a dedicated handler for specific servers.
+                -- For example, a handler override for the `rust_analyzer`:
+                -- ["rust_analyzer"] = function ()
+                --     require("rust-tools").setup {}
+                -- end
+            }
+        end,
     },
     {
         "neovim/nvim-lspconfig",
