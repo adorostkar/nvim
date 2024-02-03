@@ -1,13 +1,7 @@
 return {
     -- E X P E R I M E N T S
+    -- { 'tpope/vim-surround', },
     -- { 'mhinz/vim-startify' },
-    {
-        'nvimtools/none-ls.nvim',
-        event = "VeryLazy",
-        opts = function()
-            return require "configs.none-ls"
-        end,
-    },
     -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
     -- {
     --     'windwp/nvim-autopairs',
@@ -43,12 +37,22 @@ return {
     --     }
     -- },
     -- { -- progress provider
-    --     'j-hui/fidget.nvim', 
+    --     'j-hui/fidget.nvim',
     --     config = function()
     --         require('fidget').setup()
     --     end,
     -- },
     -- E N D
+    {
+        'nvimtools/none-ls.nvim',
+        event = "VeryLazy",
+        opts = function()
+            return require "configs.none-ls"
+        end,
+    },
+    {
+        'ntpeters/vim-better-whitespace',
+    },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -82,7 +86,7 @@ return {
             })
         end,
     },
-    { 
+    {
         'echasnovski/mini.indentscope', version = false,
         config = function()
             require('mini.indentscope').setup()
@@ -91,14 +95,14 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function () 
+        config = function ()
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
                 ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc" },
                 sync_install = false,
                 highlight = { enable = true },
-                indent = { enable = true },  
+                indent = { enable = true },
             })
         end
     },
@@ -130,7 +134,6 @@ return {
             'junegunn/fzf',
         },
     },
-    -- { 'tpope/vim-surround', },
     {
         'kylechui/nvim-surround',
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -142,7 +145,7 @@ return {
         end,
     },
     { 'junegunn/fzf', },
-    { 
+    {
         'junegunn/fzf.vim',
         keys = {
             { "<leader>ff", "<cmd> Files<CR>", "Open fuzzy file finder",},
@@ -173,44 +176,6 @@ return {
             if vim.fn.executable('rg') == 1 then
                 vim.g.ackprg='rg --vimgrep --no-heading'
             end
-        end, 
-    },
-    {
-        "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "clangd",
-                "luau-lsp",
-                "bash-language-server",
-                "clang-format",
-            }
-        },
-        config = function()
-            require('mason').setup()
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = {
-            "williamboman/mason.nvim",
-        },
-        config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup()
-
-            require("mason-lspconfig").setup_handlers {
-                -- The first entry (without a key) will be the default handler
-                -- and will be called for each installed server that doesn't have
-                -- a dedicated handler.
-                function (server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {}
-                end,
-                -- Next, you can provide a dedicated handler for specific servers.
-                -- For example, a handler override for the `rust_analyzer`:
-                -- ["rust_analyzer"] = function ()
-                --     require("rust-tools").setup {}
-                -- end
-            }
         end,
     },
     {
