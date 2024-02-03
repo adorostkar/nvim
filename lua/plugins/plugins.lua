@@ -1,7 +1,13 @@
 return {
     -- E X P E R I M E N T S
     -- { 'mhinz/vim-startify' },
-    -- { 'nvimtools/none-ls.nvim' },
+    {
+        'nvimtools/none-ls.nvim',
+        event = "VeryLazy",
+        opts = function()
+            return require "configs.none-ls"
+        end,
+    },
     -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
     -- {
     --     'windwp/nvim-autopairs',
@@ -43,6 +49,15 @@ return {
     --     end,
     -- },
     -- E N D
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    },
     { -- does same thing as fidget
         "rcarriga/nvim-notify",
         config = function()
