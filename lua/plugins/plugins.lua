@@ -36,12 +36,6 @@ return {
     --         -- refer to the configuration section below
     --     }
     -- },
-    -- { -- progress provider
-    --     'j-hui/fidget.nvim',
-    --     config = function()
-    --         require('fidget').setup()
-    --     end,
-    -- },
     -- E N D
     {
         'nvimtools/none-ls.nvim',
@@ -62,13 +56,70 @@ return {
             -- refer to the configuration section below
         },
     },
-    { -- does same thing as fidget
-        "rcarriga/nvim-notify",
+    { -- progress provider
+        'j-hui/fidget.nvim',
         config = function()
-            require('notify').setup()
-            vim.notify = require('notify')
+            require('fidget').setup({
+                notification = {
+                    poll_rate = 10,               -- How frequently to update and render notifications
+                    filter = vim.log.levels.INFO, -- Minimum notifications level
+                    history_size = 256,           -- Number of removed messages to retain in history
+                    override_vim_notify = true,  -- Automatically override vim.notify() with Fidget
+                    -- Options related to the notification window and buffer
+                    window = {
+                        winblend = 50,             -- Background color opacity in the notification window
+                        border = "none",            -- Border around the notification window, h fidget-options for choices
+                        align = "top",           -- How to align the notification window
+                        x_padding = 3,
+                        y_padding = 1,
+                    },
+                },
+            })
         end,
     },
+    -- { -- does same thing as fidget
+    --     "rcarriga/nvim-notify",
+    --     config = function()
+    --         require('notify').setup()
+    --         vim.notify = require('notify')
+    --     end,
+    -- },
+    -- { -- replaces ex line and notification provider alternative
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         -- add any options here
+    --     },
+    --     dependencies = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         -- "rcarriga/nvim-notify",
+    --         "hrsh7th/nvim-cmp",
+    --     },
+    --     config = function()
+    --         require("noice").setup({
+    --             lsp = {
+    --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    --                 override = {
+    --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+    --                     ["vim.lsp.util.stylize_markdown"] = true,
+    --                     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+    --                 },
+    --             },
+    --             -- you can enable a preset for easier configuration
+    --             presets = {
+    --                 bottom_search = true, -- use a classic bottom cmdline for search
+    --                 -- command_palette = true, -- position the cmdline and popupmenu together
+    --                 long_message_to_split = true, -- long messages will be sent to a split
+    --                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    --                 lsp_doc_border = false, -- add a border to hover docs and signature help
+    --             },
+    --         })
+    --     end,
+    -- },
     { -- autocompletion framework for different sources
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -105,12 +156,6 @@ return {
                 indent = { enable = true },
             })
         end
-    },
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end,
     },
     {
         'skywind3000/asyncrun.vim',
@@ -158,6 +203,12 @@ return {
             -- add any options here
         },
         lazy = false,
+    },
+    { -- shows changed on the left side
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end,
     },
     {
         "NeogitOrg/neogit",
