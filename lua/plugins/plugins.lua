@@ -60,11 +60,6 @@ return {
             { "<Left>", "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
         },
     },
-    {
-        'numToStr/Comment.nvim',
-        opts = {},
-        lazy = false,
-    },
     { "dhruvasagar/vim-table-mode", },
     { "neovim/nvim-lspconfig", },
     -- E N D   E V A L U A T I N G
