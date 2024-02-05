@@ -1,9 +1,7 @@
 local M = {
     { -- shows changed on the left side
         'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end,
+        opts = {}, -- same as running empty setup
     },
     {
         "NeogitOrg/neogit",

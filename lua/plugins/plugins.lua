@@ -1,6 +1,5 @@
 return {
     -- E X P E R I M E N T S
-    -- { 'tpope/vim-surround', },
     -- { 'mhinz/vim-startify' },
     -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
     -- {
@@ -31,14 +30,9 @@ return {
     --         -- refer to the configuration section below
     --     }
     -- },
-    -- { 'folke/neodev.nvim', }
+    { 'folke/neodev.nvim', opts= {}},
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        opts = {} -- this is equalent to setup({}) function
-    },
     {
         'ntpeters/vim-better-whitespace',
     },
@@ -70,102 +64,10 @@ return {
     --         })
     --     end,
     -- },
-    -- W O R K S   T O G T H E R
-    { -- does same thing as fidget
-        "rcarriga/nvim-notify",
-        config = function()
-            require('notify').setup({
-                -- render = "default"
-                -- render = "minimal",
-                -- render = "simple"
-                -- render = "compact"
-                render = "wrapped-compact",
-                stages = "fade_in_slide_out",
-            })
-            vim.notify = require('notify')
-        end,
-    },
-    {
-        'mrded/nvim-lsp-notify',
-        dependencies = {
-            'rcarriga/nvim-notify'
-        },
-        config = function()
-            require('lsp-notify').setup()
-        end,
-    },
-    -- E N D   W O R K S   T O G E T H E R
-    -- { -- replaces ex line and notification provider alternative
-    --     "folke/noice.nvim",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         -- add any options here
-    --     },
-    --     dependencies = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         -- OPTIONAL:
-    --         --   `nvim-notify` is only needed, if you want to use the notification view.
-    --         --   If not available, we use `mini` as the fallback
-    --         -- "rcarriga/nvim-notify",
-    --         "hrsh7th/nvim-cmp",
-    --     },
-    --     config = function()
-    --         require("noice").setup({
-    --             lsp = {
-    --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-    --                 override = {
-    --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-    --                     ["vim.lsp.util.stylize_markdown"] = true,
-    --                     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-    --                 },
-    --             },
-    --             -- you can enable a preset for easier configuration
-    --             presets = {
-    --                 bottom_search = true, -- use a classic bottom cmdline for search
-    --                 -- command_palette = true, -- position the cmdline and popupmenu together
-    --                 long_message_to_split = true, -- long messages will be sent to a split
-    --                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    --                 lsp_doc_border = false, -- add a border to hover docs and signature help
-    --             },
-    --         })
-    --     end,
-    -- },
-    { -- autocompletion framework for different sources
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'FelipeLema/cmp-async-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua'
-        },
-        config = function()
-            require('cmp').setup({
-                sources = {
-                    { name = 'async_path' },
-                    { name = 'nvim_lsp' },
-                    { name = 'nvim_lua' },
-                },
-            })
-        end,
-    },
     {
         'echasnovski/mini.indentscope', version = false,
         config = function()
             require('mini.indentscope').setup()
-        end
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function ()
-            local configs = require("nvim-treesitter.configs")
-
-            configs.setup({
-                ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc" },
-                sync_install = false,
-                highlight = { enable = true },
-                indent = { enable = true },
-            })
         end
     },
     { 'skywind3000/asyncrun.vim', },
