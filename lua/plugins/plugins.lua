@@ -15,22 +15,12 @@ return {
     --         -- refer to the configuration section below
     --     }
     -- },
-    -- {
-    --      'echasnovski/mini.trailspace', version = false,
-    --      config = function()
-    --          require('mini.trailspace').setup()
-    --      end,
-    -- },
-    -- {
-    --     "folke/todo-comments.nvim",
-    --     dependencies = { "nvim-lua/plenary.nvim" },
-    --     opts = {
-    --         -- your configuration comes here
-    --         -- or leave it empty to use the default settings
-    --         -- refer to the configuration section below
-    --     }
-    -- },
-    { 'folke/neodev.nvim', opts= {}},
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+    },
+    -- { 'folke/neodev.nvim', opts= {}},
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G
     {
@@ -43,33 +33,6 @@ return {
     },
     -- E N D   C O N F I G U R I N G
     -- E V A L U A T I N G
-    -- { -- progress provider
-    --     'j-hui/fidget.nvim',
-    --     config = function()
-    --         require('fidget').setup({
-    --             notification = {
-    --                 poll_rate = 10,               -- How frequently to update and render notifications
-    --                 filter = vim.log.levels.INFO, -- Minimum notifications level
-    --                 history_size = 256,           -- Number of removed messages to retain in history
-    --                 override_vim_notify = true,  -- Automatically override vim.notify() with Fidget
-    --                 -- Options related to the notification window and buffer
-    --                 window = {
-    --                     winblend = 50,             -- Background color opacity in the notification window
-    --                     border = "none",            -- Border around the notification window, h fidget-options for choices
-    --                     align = "top",           -- How to align the notification window
-    --                     x_padding = 3,
-    --                     y_padding = 1,
-    --                 },
-    --             },
-    --         })
-    --     end,
-    -- },
-    {
-        'echasnovski/mini.indentscope', version = false,
-        config = function()
-            require('mini.indentscope').setup()
-        end
-    },
     { 'skywind3000/asyncrun.vim', },
     { 'tpope/vim-dispatch', },
     {
@@ -90,11 +53,9 @@ return {
     {
         'junegunn/fzf.vim',
         dependencies = {
-            'junegunn/fzf.vim',
+            { 'junegunn/fzf', build = 'install', },
         },
         keys = {
-            -- { "<leader>ff", "<cmd> Files<CR>", "Open fuzzy file finder",},
-            -- { "<leader>fb", "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
             { "<Right>", "<cmd> Files<CR>", "Open fuzzy file finder",},
             { "<Left>", "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
         },
