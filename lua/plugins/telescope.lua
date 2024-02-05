@@ -5,7 +5,7 @@ local M = {
         keys = {
             { "<leader>tf", "<cmd> Telescope find_files<CR>", "open fuzzy file finder", },
             { "<leader>tb", "<cmd> Telescope buffers<CR>", "open fuzzy buffer", },
-            { "<leader>tg", "<cmd> Telescope live_grep<CR>", "Open live grep", }, 
+            { "<leader>tg", "<cmd> Telescope live_grep<CR>", "Open live grep", },
             { "<leader>to", "<cmd> Telescope oldfiles<CR>", "Open list of previously opened files" },
             { "<leader>tc", "<cmd> Telescope colorscheme<CR>", "Open list of colorschemes" },
         },

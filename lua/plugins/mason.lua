@@ -9,8 +9,17 @@ local M = {
                 "clang-format",
             }
         },
-        config = function()
-            require('mason').setup()
+        config = function(_, opts)
+            require('mason').setup(opts)
+
+            -- Key mapping to make use of the ensure_installed list
+            -- Note that ensure installed is not a native option
+            vim.api.nvim_create_user_command("MasonInstallAll", function()
+                require('fidget').notify(table.concat(opts))
+                if opts.ensure_installed and #opts.ensure_installed > 0 then
+                    vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+                end
+            end, {})
         end,
     },
     {
