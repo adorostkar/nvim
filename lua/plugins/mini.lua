@@ -5,7 +5,7 @@ local M = {
             require('mini.indentscope').setup()
             require('mini.comment').setup()
             require('mini.splitjoin').setup()
-        end
+        end,
     },
 }
 

@@ -2,19 +2,15 @@ return {
     -- E X P E R I M E N T S
     -- { 'mhinz/vim-startify' },
     -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
-    -- {
-    --     "folke/which-key.nvim",
-    --     event = "VeryLazy",
-    --     init = function()
-    --         vim.o.timeout = true
-    --         vim.o.timeoutlen = 300
-    --     end,
-    --     opts = {
-    --         -- your configuration comes here
-    --         -- or leave it empty to use the default settings
-    --         -- refer to the configuration section below
-    --     }
-    -- },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    },
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -49,16 +45,6 @@ return {
         config = function()
             require("nvim-surround").setup()
         end,
-    },
-    {
-        'junegunn/fzf.vim',
-        dependencies = {
-            { 'junegunn/fzf', build = 'install', },
-        },
-        keys = {
-            { "<Right>", "<cmd> Files<CR>", "Open fuzzy file finder",},
-            { "<Left>", "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
-        },
     },
     { "dhruvasagar/vim-table-mode", },
     { "neovim/nvim-lspconfig", },
