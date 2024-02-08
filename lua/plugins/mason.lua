@@ -7,6 +7,7 @@ local M = {
                 "luau-lsp",
                 "bash-language-server",
                 "clang-format",
+                "codelldb"
             }
         },
         config = function(_, opts)
