@@ -11,9 +11,21 @@ return {
         end,
         opts = {}
     },
+    { -- don't know if I want to use
+        "rbong/vim-flog",
+        lazy = true,
+        cmd = { "Flog", "Flogsplit", "Floggit" },
+        dependencies = {
+            "tpope/vim-fugitive",
+        },
+    },
     {
         "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            'folke/trouble.nvim',
+        },
+        cmd = {'TodoLocList', 'TodoQuickFix', 'TodoTelescope', 'TodoTrouble'},
         opts = {},
     },
     -- { 'folke/neodev.nvim', opts= {}},
@@ -21,6 +33,7 @@ return {
     -- C O N F I G U R I N G
     {
         'ntpeters/vim-better-whitespace',
+        event = 'BufRead', -- only load when a buffer is opened
     },
     {
         "folke/trouble.nvim",
@@ -36,14 +49,6 @@ return {
         config = function()
             local map = vim.keymap.set
             map({'n', 'v'}, "ga", "<Plug>(EasyAlign)", { silent = true })
-        end,
-    },
-    {
-        'kylechui/nvim-surround',
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup()
         end,
     },
     { "dhruvasagar/vim-table-mode", },
