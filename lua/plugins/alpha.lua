@@ -26,7 +26,8 @@ local M = {
 		dashboard.section.buttons.val = {
 			dashboard.button('i', '    new file', ':ene <BAR> startinsert<CR>'),
 			dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
-			dashboard.button('f', '󰥨    find file', ':Telescope file_browser<CR>'),
+			-- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
+			dashboard.button('f', '󰥨    find file', ':FZF<CR>'),
 			dashboard.button('g', '󰱼    find text', ':Telescope live_grep_args<CR>'),
 			dashboard.button('h', '    browse git', ':Flog<CR>'),
 			dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
