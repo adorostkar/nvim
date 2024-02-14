@@ -32,7 +32,8 @@ local M = {
 			dashboard.button('h', '    browse git', ':Flog<CR>'),
 			dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
 			dashboard.button('m', '󱌣    mason', ':Mason<CR>'),
-			dashboard.button('p', '󰄉    profile', ':Lazy profile<CR>'),
+			-- dashboard.button('p', '󰄉    profile', ':Lazy profile<CR>'),
+			dashboard.button('u', '󰚰    Update config', ':!(cd ~/.config/nvim && git pull)<CR>'),
 			dashboard.button('q', '󰭿    quit', ':qa<CR>'),
 		}
 		return dashboard
