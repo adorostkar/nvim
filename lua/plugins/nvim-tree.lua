@@ -9,6 +9,9 @@ local M = {
                 hijack_netrw = true,
                 respect_buf_cwd = true,
                 sync_root_with_cwd = true,
+                update_focused_file = {
+                    enable = true,
+                },
                 view = {
                     width = 30,
                 },
