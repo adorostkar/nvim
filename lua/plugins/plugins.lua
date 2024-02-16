@@ -59,6 +59,5 @@ return {
         end,
     },
     { "dhruvasagar/vim-table-mode", },
-    { "neovim/nvim-lspconfig", },
     -- E N D   E V A L U A T I N G
 }

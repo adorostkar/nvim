@@ -1,4 +1,10 @@
 local M = {
+    {
+        "folke/tokyonight.nvim",
+        -- config = function()
+            -- vim.cmd([[colorscheme tokyonight]])
+        -- end,
+    },
     { -- color theme
         "navarasu/onedark.nvim",
         -- config = function()
