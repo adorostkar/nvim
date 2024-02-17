@@ -1,12 +1,16 @@
 local M = {
     {
         "folke/tokyonight.nvim",
+        -- lazy = false,
+        -- priority = 1000,
         -- config = function()
             -- vim.cmd([[colorscheme tokyonight]])
         -- end,
     },
     { -- color theme
         "navarasu/onedark.nvim",
+        -- lazy = false,
+        -- priority = 1000,
         -- config = function()
             -- vim.cmd([[colorscheme onedark]])
         -- end,
