@@ -19,9 +19,8 @@ local M = {
                 },
             })
         end,
+        cond = false,
     },
 }
 
--- NOTE: Disabled
--- return M
-return {}
+return M

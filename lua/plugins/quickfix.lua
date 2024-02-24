@@ -4,6 +4,7 @@ local M = {
     },
     { -- quickfix preview
         'kevinhwang91/nvim-bqf',
+        ft = 'qf',
         dependencies = {
             'junegunn/fzf',
         },

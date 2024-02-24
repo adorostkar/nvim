@@ -3,10 +3,6 @@ local M = {
         "rcarriga/nvim-notify",
         config = function()
             require('notify').setup({
-                -- render = "default"
-                -- render = "minimal",
-                -- render = "simple"
-                -- render = "compact"
                 render = "wrapped-compact",
                 stages = "fade_in_slide_out",
             })
@@ -21,8 +17,15 @@ local M = {
         config = function()
             require('lsp-notify').setup()
         end,
+        cond = function()
+            if(require('noice'))
+            then
+                return false
+            end
+            return true
+        end,
     },
 }
 
--- return M
-return {}
+return M
+-- return {}

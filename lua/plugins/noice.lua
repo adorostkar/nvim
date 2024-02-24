@@ -21,15 +21,7 @@ local M = {
         },
         dependencies = {
             "MunifTanjim/nui.nvim",
-            {
-                "rcarriga/nvim-notify",
-                config = function()
-                    require('notify').setup({
-                        render = "wrapped-compact",
-                        stages = "fade_in_slide_out",
-                    })
-                end,
-            },
+            "rcarriga/nvim-notify",
             "hrsh7th/nvim-cmp",
         },
     },
