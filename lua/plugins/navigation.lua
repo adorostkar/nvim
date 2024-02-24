@@ -1,5 +1,16 @@
 local M = {
     {
+        'stevearc/oil.nvim',
+        config = function()
+            require('oil').setup()
+            vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+        end,
+    },
+    {
+        'tpope/vim-vinegar',
+        cond = false,
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
@@ -33,6 +44,7 @@ local M = {
 
             map("n", "<C-n>", "<cmd> NvimTreeToggle<CR>", { silent = true })
         end,
+        cond = false,
     },
 }
 

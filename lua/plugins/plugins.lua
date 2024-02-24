@@ -1,7 +1,6 @@
 return {
     -- E X P E R I M E N T S
     -- { 'mhinz/vim-startify' },
-    -- { 'tpope/vim-vinegar', }, -- alternative to nvim-tree based on netrw
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
