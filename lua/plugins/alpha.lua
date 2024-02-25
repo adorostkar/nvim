@@ -41,7 +41,7 @@ local M = {
                 dashboard.button('l', '󰒲    Lazy', ':Lazy<CR>'),
                 dashboard.button('m', '󱌣    Mason', ':Mason<CR>'),
                 dashboard.button('u', '󰚰    Update nvim config', ':!(cd ~/.config/nvim && git pull)<CR>'),
-                dashboard.button('n', '󰚰    Open nvim config', ':cd ~/.config/nvim | Oil<CR>'),
+                dashboard.button('n', '󰚰    Open nvim config', ':cd ~/.config/nvim | FzfLua files<CR>'),
                 dashboard.button('q', '󰭿    Quit', ':qa<CR>'),
             }
         )
