@@ -18,9 +18,9 @@ require('lazy').setup('plugins')
 vim.g.termuicolors = true
 
 
-  local function trim(s)
+local function trim(s)
     return s:match('^%s*(.-)%s*$')
-  end
+end
 
 -- load init.lua in .git directory if it exists
 local function get_git_root()

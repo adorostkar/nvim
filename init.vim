@@ -13,6 +13,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" This will hide some of the characters or show short forms
+" Usefull for markdown
+set conceallevel=2
+
 if !isdirectory($HOME . "/.cache/nvim")
     call mkdir($HOME . "/.cache/nvim", "", 0770)
 endif
