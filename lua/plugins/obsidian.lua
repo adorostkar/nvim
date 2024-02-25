@@ -18,18 +18,19 @@ local M = {
             "nvim-telescope/telescope.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        config = function()
+        opts = function()
             local obsidian_path = os.getenv("OBSIDIAN_DIR")
             if obsidian_path then
-                require("obsidian").setup({
+               return {
                     workspaces = {
                         {
                             name = "personal",
                             path = obsidian_path,
                         },
                     },
-                })
+                }
             end
+            return {}
         end,
     },
 }
