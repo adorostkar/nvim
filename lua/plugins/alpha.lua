@@ -21,7 +21,8 @@ local M = {
 			dashboard.button('i', '    new file', ':ene <BAR> startinsert<CR>'),
         }
 
-        if require('obsidian') then
+        local hasObsidian, _ = pcall(require, 'obsidian')
+        if hasObsidian then
             vim.list_extend(
                 buttons,
                 {

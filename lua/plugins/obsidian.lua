@@ -1,3 +1,13 @@
+local obsidian_path = os.getenv("OBSIDIAN_DIR")
+if obsidian_path == nil then
+    return {
+        {
+            "epwalsh/obsidian.nvim",
+            cond = false,
+        },
+    }
+end
+
 local M = {
     {
         "epwalsh/obsidian.nvim",
@@ -18,20 +28,14 @@ local M = {
             "nvim-telescope/telescope.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        opts = function()
-            local obsidian_path = os.getenv("OBSIDIAN_DIR")
-            if obsidian_path then
-               return {
-                    workspaces = {
-                        {
-                            name = "personal",
-                            path = obsidian_path,
-                        },
-                    },
-                }
-            end
-            return {}
-        end,
+        opts = {
+            workspaces = {
+                {
+                    name = "personal",
+                    path = obsidian_path,
+                },
+            },
+        },
     },
 }
 
