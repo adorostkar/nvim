@@ -22,10 +22,15 @@ local M = {
             workspaces = {
                 {
                     name = "personal",
-                    path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianVault"
+                    path = function()
+                        return os.getenv('OBSIDIAN_DIR')
+                    end,
                 },
             },
         },
+        cond = function()
+            return os.getenv("OBSIDIAN_DIR") ~= nil
+        end,
     },
 }
 
