@@ -17,18 +17,33 @@ local M = {
             " ██████  ███ █████████████████ ████ █████ █████ ████ ██████",
         }
 
-		dashboard.section.buttons.val = {
+        local buttons = {
 			dashboard.button('i', '    new file', ':ene <BAR> startinsert<CR>'),
-			dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
-			-- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
-			dashboard.button('f', '󰥨    find file', ':FzfLua files<CR>'),
-			dashboard.button('g', '󰱼    find text', ':Telescope live_grep_args<CR>'),
-			dashboard.button('h', '    browse git', ':Flog<CR>'),
-			dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
-			dashboard.button('m', '󱌣    mason', ':Mason<CR>'),
-			dashboard.button('u', '󰚰    Update config', ':!(cd ~/.config/nvim && git pull)<CR>'),
-			dashboard.button('q', '󰭿    quit', ':qa<CR>'),
-		}
+        }
+
+        if require('obsidian') then
+            vim.list_extend(
+                buttons,
+                {
+                    dashboard.button('o', '󱓧    Obsidian', ':ObsidianQuickSwitch<CR>'),
+                }
+            )
+        end
+
+        vim.list_extend(buttons,
+            {
+                dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
+                dashboard.button('f', '󰥨    find file', ':FzfLua files<CR>'),
+                -- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
+                dashboard.button('g', '󰱼    find text', ':Telescope live_grep_args<CR>'),
+                dashboard.button('h', '    browse git', ':Flog<CR>'),
+                dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
+                dashboard.button('m', '󱌣    mason', ':Mason<CR>'),
+                dashboard.button('u', '󰚰    Update config', ':!(cd ~/.config/nvim && git pull)<CR>'),
+                dashboard.button('q', '󰭿    quit', ':qa<CR>'),
+            }
+        )
+		dashboard.section.buttons.val = buttons
 		return dashboard
 	end,
 	config = function(_, dashboard)
