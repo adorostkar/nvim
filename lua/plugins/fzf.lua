@@ -5,6 +5,7 @@ local M = {
             { 'junegunn/fzf', build = './install', },
             'nvim-tree/nvim-web-devicons',
         },
+        cmd = { 'FzfLua' },
         keys = {
             { "<Right>", "<cmd>FzfLua files<CR>", "Open fuzzy file finder",},
             { "<Left>", "<cmd>FzfLua buffers<CR>", "Open fuzzy buffer finder", },

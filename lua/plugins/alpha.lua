@@ -7,12 +7,6 @@ local M = {
 
         -- Set header
         dashboard.section.header.val = {
-            -- "███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗",
-            -- "████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║",
-            -- "██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║",
-            -- "██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║",
-            -- "██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║",
-            -- "╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚══╝  ╚═╝╚═╝     ╚═╝",
             "                                              ",
             "       ███████████           █████      ██",
             "      ███████████             █████ ",
@@ -27,12 +21,11 @@ local M = {
 			dashboard.button('i', '    new file', ':ene <BAR> startinsert<CR>'),
 			dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
 			-- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
-			dashboard.button('f', '󰥨    find file', ':FZF<CR>'),
+			dashboard.button('f', '󰥨    find file', ':FzfLua files<CR>'),
 			dashboard.button('g', '󰱼    find text', ':Telescope live_grep_args<CR>'),
 			dashboard.button('h', '    browse git', ':Flog<CR>'),
 			dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
 			dashboard.button('m', '󱌣    mason', ':Mason<CR>'),
-			-- dashboard.button('p', '󰄉    profile', ':Lazy profile<CR>'),
 			dashboard.button('u', '󰚰    Update config', ':!(cd ~/.config/nvim && git pull)<CR>'),
 			dashboard.button('q', '󰭿    quit', ':qa<CR>'),
 		}
