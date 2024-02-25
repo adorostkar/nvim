@@ -5,9 +5,11 @@ local M = {
             ensure_installed = {
                 "clangd",
                 "luau-lsp",
+                "lua-language-server",
                 "bash-language-server",
                 "clang-format",
-                "codelldb"
+                "codelldb",
+                "eslint",
             }
         },
         config = function(_, opts)
