@@ -34,14 +34,15 @@ local M = {
         vim.list_extend(buttons,
             {
                 dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
-                dashboard.button('f', '󰥨    find file', ':FzfLua files<CR>'),
                 -- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
-                dashboard.button('g', '󰱼    find text', ':Telescope live_grep_args<CR>'),
-                dashboard.button('h', '    browse git', ':Flog<CR>'),
-                dashboard.button('l', '󰒲    lazy', ':Lazy<CR>'),
-                dashboard.button('m', '󱌣    mason', ':Mason<CR>'),
-                dashboard.button('u', '󰚰    Update config', ':!(cd ~/.config/nvim && git pull)<CR>'),
-                dashboard.button('q', '󰭿    quit', ':qa<CR>'),
+                dashboard.button('f', '󰥨    Find file', ':FzfLua files<CR>'),
+                dashboard.button('g', '󰱼    Find text', ':Telescope live_grep_args<CR>'),
+                dashboard.button('h', '    Browse git', ':Flog<CR>'),
+                dashboard.button('l', '󰒲    Lazy', ':Lazy<CR>'),
+                dashboard.button('m', '󱌣    Mason', ':Mason<CR>'),
+                dashboard.button('u', '󰚰    Update nvim config', ':!(cd ~/.config/nvim && git pull)<CR>'),
+                dashboard.button('n', '󰚰    Open nvim config', ':cd ~/.config/nvim | Oil<CR>'),
+                dashboard.button('q', '󰭿    Quit', ':qa<CR>'),
             }
         )
 		dashboard.section.buttons.val = buttons
