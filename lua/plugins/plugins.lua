@@ -19,7 +19,23 @@ return {
         cmd = { 'TodoLocList', 'TodoQuickFix', 'TodoTelescope', 'TodoTrouble' },
         opts = {},
     },
-    { 'folke/neodev.nvim', opts= {}},
+    {
+        'folke/neodev.nvim',
+        config = function()
+            require("neodev").setup({})
+
+            -- then setup your lsp server as usual
+            require('lspconfig').lua_ls.setup({
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace"
+                        }
+                    }
+                }
+            })
+        end,
+    },
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G
     {
