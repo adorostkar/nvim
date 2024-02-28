@@ -16,10 +16,10 @@ return {
             "nvim-lua/plenary.nvim",
             'folke/trouble.nvim',
         },
-        cmd = {'TodoLocList', 'TodoQuickFix', 'TodoTelescope', 'TodoTrouble'},
+        cmd = { 'TodoLocList', 'TodoQuickFix', 'TodoTelescope', 'TodoTrouble' },
         opts = {},
     },
-    -- { 'folke/neodev.nvim', opts= {}},
+    { 'folke/neodev.nvim', opts= {}},
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G
     {
@@ -28,13 +28,20 @@ return {
     },
     {
         "folke/trouble.nvim",
+        cmd = { 'Trouble', 'TroubleClose', 'TroubleRefresh', 'TroubleToggle', },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
     },
     -- E N D   C O N F I G U R I N G
     -- E V A L U A T I N G
-    { 'skywind3000/asyncrun.vim', },
-    { 'tpope/vim-dispatch', },
+    {
+        'skywind3000/asyncrun.vim',
+        cmd = { 'AsyncRun', 'AsyncStop', 'AsyncReset', },
+    },
+    {
+        'tpope/vim-dispatch',
+        cmd = { 'Dispatch', 'Make' },
+    },
     {
         'junegunn/vim-easy-align',
         config = function()
@@ -42,6 +49,9 @@ return {
             map({'n', 'v'}, "ga", "<Plug>(EasyAlign)", { silent = true })
         end,
     },
-    { "dhruvasagar/vim-table-mode", },
+    {
+        "dhruvasagar/vim-table-mode",
+        keys = { '<Leader>tm' },
+    },
     -- E N D   E V A L U A T I N G
 }
