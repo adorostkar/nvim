@@ -3,9 +3,9 @@ local M = {
         'tpope/vim-fugitive',
         cmd = { 'Git', },
     },
-    { -- shows changed on the left side
+    { -- shows changes on the gutter
         'lewis6991/gitsigns.nvim',
-        opts = {}, -- same as running empty setup
+        opts = {},
     },
     {
         "NeogitOrg/neogit",

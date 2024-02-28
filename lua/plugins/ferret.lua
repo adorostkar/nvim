@@ -1,7 +1,7 @@
 local M = {
     { -- ack.vim replacement
         'wincent/ferret',
-        event = "VeryLazy",
+        cmd = { 'Ack', 'Lack', 'Back', 'Black', 'Quack', 'Acks', 'Lacks', },
     },
 }
 
