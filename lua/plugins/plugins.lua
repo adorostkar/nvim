@@ -21,6 +21,7 @@ return {
     },
     {
         'folke/neodev.nvim',
+        ft = { 'lua', 'vim', },
         config = function()
             require("neodev").setup({})
 
