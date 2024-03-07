@@ -35,10 +35,12 @@ set history=5000
 " sourcing vimrc in git repos
 let git_path = system("git rev-parse --show-toplevel 2>/dev/null")
 let git_vimrc = substitute(git_path, '\n', '', '') . "/.git/vimrc"
-if !empty(glob(git_vimrc))
+let git_tags = substitute(git_path, '\n', '', '') . "/.git/tags"
+
+if !empty(git_path) && !empty(glob(git_vimrc))
     exec ":source " . git_vimrc
 endif
 
-" Highlight trailing spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+if !empty(git_path) && !empty(glob(git_tags))
+    exec "set tags^=" . git_tags
+endif
