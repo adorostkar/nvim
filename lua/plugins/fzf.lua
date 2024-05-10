@@ -2,7 +2,7 @@ local M = {
     {
         'ibhagwan/fzf-lua',
         dependencies = {
-            { 'junegunn/fzf', build = './install', },
+            { 'junegunn/fzf', build = './install --all', },
             'nvim-tree/nvim-web-devicons',
         },
         cmd = { 'FzfLua' },
