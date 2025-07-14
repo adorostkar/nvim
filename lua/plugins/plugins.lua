@@ -37,6 +37,13 @@ return {
             })
         end,
     },
+    {
+        "nvim-pack/nvim-spectre",
+        opts = {},
+    },
+    {
+        'preservim/tagbar',
+    },
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G
     {
