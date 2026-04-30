@@ -3,8 +3,13 @@ local M = {
         'mfussenegger/nvim-dap',
         config = function()
             local map = vim.keymap.set
-            map('n', "<Leader>db", "<cmd> DapToggleBreakpoint<CR>", { silent = true })
-            map('n', "<Leader>dr", "<cmd> DapContinue<CR>", { silent = true })
+            map('n', "<Leader>db", "<cmd>DapToggleBreakpoint<CR>",          { silent = true, desc = "Toggle breakpoint" })
+            map('n', "<Leader>dr", "<cmd>DapContinue<CR>",                  { silent = true, desc = "Continue / Start" })
+            map('n', "<Leader>dn", "<cmd>DapStepOver<CR>",                  { silent = true, desc = "Step over" })
+            map('n', "<Leader>di", "<cmd>DapStepInto<CR>",                  { silent = true, desc = "Step into" })
+            map('n', "<Leader>do", "<cmd>DapStepOut<CR>",                   { silent = true, desc = "Step out" })
+            map('n', "<Leader>dq", "<cmd>DapTerminate<CR>",                 { silent = true, desc = "Terminate" })
+            map('n', "<Leader>du", function() require("dapui").toggle() end, { silent = true, desc = "Toggle DAP UI" })
         end,
     },
     {

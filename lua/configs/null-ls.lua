@@ -15,7 +15,10 @@ local opts = {
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
+                    vim.lsp.buf.format({
+                        bufnr = bufnr,
+                        filter = function(c) return c.name == "null-ls" end,
+                    })
                 end,
             })
         end
@@ -23,4 +26,3 @@ local opts = {
 }
 
 return opts
-
