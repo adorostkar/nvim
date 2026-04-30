@@ -1,3 +1,6 @@
+let mapleader = " "
+let maplocalleader = " "
+
 lua require('config')
 
 " enable line numbering
@@ -31,16 +34,3 @@ set undodir=$HOME/.cache/nvim/undos
 set undolevels=1000
 set undoreload=10000
 set history=5000
-
-" sourcing vimrc in git repos
-let git_path = system("git rev-parse --show-toplevel 2>/dev/null")
-let git_vimrc = substitute(git_path, '\n', '', '') . "/.git/vimrc"
-let git_tags = substitute(git_path, '\n', '', '') . "/.git/tags"
-
-if !empty(git_path) && !empty(glob(git_vimrc))
-    exec ":source " . git_vimrc
-endif
-
-if !empty(git_path) && !empty(glob(git_tags))
-    exec "set tags^=" . git_tags
-endif

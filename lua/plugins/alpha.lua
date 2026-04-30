@@ -36,7 +36,7 @@ local M = {
                 dashboard.button('r', '    recent files', ':Telescope oldfiles<CR>'),
                 -- dashboard.button('f', '󰥨    find file', ':Telescope find_files<CR>'),
                 dashboard.button('f', '󰥨    Find file', ':FzfLua files<CR>'),
-                dashboard.button('g', '󰱼    Find text', ':Telescope live_grep_args<CR>'),
+                dashboard.button('g', '󰱼    Find text', ':Telescope live_grep<CR>'),
                 dashboard.button('h', '    Browse git', ':Flog<CR>'),
                 dashboard.button('l', '󰒲    Lazy', ':Lazy<CR>'),
                 dashboard.button('m', '󱌣    Mason', ':Mason<CR>'),

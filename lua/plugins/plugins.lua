@@ -21,21 +21,7 @@ return {
     },
     {
         'folke/neodev.nvim',
-        ft = { 'lua', 'vim', },
-        config = function()
-            require("neodev").setup({})
-
-            -- then setup your lsp server as usual
-            require('lspconfig').lua_ls.setup({
-                settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = "Replace"
-                        }
-                    }
-                }
-            })
-        end,
+        lazy = false,
     },
     {
         "nvim-pack/nvim-spectre",
