@@ -41,13 +41,11 @@ local M = {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "folke/neodev.nvim",
+            "folke/lazydev.nvim",
             "hrsh7th/cmp-nvim-lsp",
             "mason-org/mason-lspconfig.nvim",
         },
         config = function()
-            require("neodev").setup({})
-
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 

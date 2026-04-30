@@ -20,15 +20,22 @@ return {
         opts = {},
     },
     {
-        'folke/neodev.nvim',
-        lazy = false,
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
     {
         "nvim-pack/nvim-spectre",
+        cmd = { "Spectre" },
         opts = {},
     },
     {
         'preservim/tagbar',
+        cmd = { 'TagbarToggle', 'TagbarOpen', 'TagbarClose' },
     },
     -- E N D   E X P E R I M E N T S
     -- C O N F I G U R I N G

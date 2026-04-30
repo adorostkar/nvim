@@ -1,14 +1,15 @@
 local M = {
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
         dependencies = { 'nvim-lua/plenary.nvim' },
         cmd = { 'Telescope', },
         keys = {
-            { "<leader>tf", "<cmd> Telescope find_files<CR>", "open fuzzy file finder", },
-            { "<leader>tb", "<cmd> Telescope buffers<CR>", "open fuzzy buffer", },
-            { "<leader>tg", "<cmd> Telescope live_grep<CR>", "Open live grep", },
-            { "<leader>to", "<cmd> Telescope oldfiles<CR>", "Open list of previously opened files" },
-            { "<leader>tc", "<cmd> Telescope colorscheme<CR>", "Open list of colorschemes" },
+            { "<leader>tf", "<cmd>Telescope find_files<CR>",  desc = "Fuzzy file finder" },
+            { "<leader>tb", "<cmd>Telescope buffers<CR>",     desc = "Fuzzy buffer finder" },
+            { "<leader>tg", "<cmd>Telescope live_grep<CR>",   desc = "Live grep" },
+            { "<leader>to", "<cmd>Telescope oldfiles<CR>",    desc = "Recently opened files" },
+            { "<leader>tc", "<cmd>Telescope colorscheme<CR>", desc = "Colorscheme picker" },
         },
         config = function()
             require('telescope').setup({

@@ -5,13 +5,13 @@ local M = {
         opts = {
             save_path = "~/Downloads",
             snapshot_config = {
-                theme = "bamboo",
+                theme = "candy",
                 code_config = {
                     breadcrumbs = {
                         enable = true,
                     },
                 },
-                watermark = "none",
+                watermark = { content = "" },
             },
         },
     },

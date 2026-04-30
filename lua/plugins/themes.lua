@@ -1,6 +1,6 @@
 local M = {
     {
-        dir = '~/repos/themer.nvim',
+	'adorostkar/themer.nvim',
         opts = { initial_theme = 'tokyonight-night'},
         priority = 1000,
         lazy = false,

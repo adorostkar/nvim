@@ -1,5 +1,5 @@
 local M = {
-    { -- does same thing as fidget
+    {
         "rcarriga/nvim-notify",
         config = function()
             require('notify').setup({
@@ -17,13 +17,7 @@ local M = {
         config = function()
             require('lsp-notify').setup()
         end,
-        cond = function()
-            if(require('noice'))
-            then
-                return false
-            end
-            return true
-        end,
+        cond = false,
     },
 }
 

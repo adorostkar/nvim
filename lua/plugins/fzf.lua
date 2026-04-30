@@ -7,8 +7,8 @@ local M = {
         },
         cmd = { 'FzfLua' },
         keys = {
-            { "<Right>", "<cmd>FzfLua files<CR>", "Open fuzzy file finder",},
-            { "<Left>", "<cmd>FzfLua buffers<CR>", "Open fuzzy buffer finder", },
+            { "<Right>", "<cmd>FzfLua files<CR>",   desc = "Fuzzy file finder" },
+            { "<Left>",  "<cmd>FzfLua buffers<CR>", desc = "Fuzzy buffer finder" },
         },
     },
     {
@@ -17,8 +17,8 @@ local M = {
             { 'junegunn/fzf', build = './install --all', },
         },
         keys = {
-            { "<Right>", "<cmd> Files<CR>", "Open fuzzy file finder",},
-            { "<Left>", "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
+            { "<Right>", "<cmd> Files<CR>",   "Open fuzzy file finder", },
+            { "<Left>",  "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
         },
         cond = false,
     },
