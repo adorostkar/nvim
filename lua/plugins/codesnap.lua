@@ -1,7 +1,7 @@
 local M = {
     {
         "mistricky/codesnap.nvim",
-        build = 'make build_generator',
+        tag = "v2.0.1",
         opts = {
             save_path = "~/Downloads",
             snapshot_config = {
