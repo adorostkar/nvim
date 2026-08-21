@@ -1,6 +1,7 @@
 local M = {
     {
         "rcarriga/nvim-notify",
+        event = "VeryLazy",
         config = function()
             require('notify').setup({
                 render = "wrapped-compact",
@@ -22,4 +23,3 @@ local M = {
 }
 
 return M
--- return {}

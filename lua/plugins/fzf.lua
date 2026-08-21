@@ -17,8 +17,8 @@ local M = {
             { 'junegunn/fzf', build = './install --all', },
         },
         keys = {
-            { "<Right>", "<cmd> Files<CR>",   "Open fuzzy file finder", },
-            { "<Left>",  "<cmd> Buffers<CR>", "Open fuzzy buffer finder", },
+            { "<Right>", "<cmd>Files<CR>", desc = "Open fuzzy file finder" },
+            { "<Left>", "<cmd>Buffers<CR>", desc = "Open fuzzy buffer finder" },
         },
         cond = false,
     },

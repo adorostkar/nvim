@@ -1,6 +1,7 @@
 local M = {
     {
         'echasnovski/mini.nvim', version = false,
+        event = "VeryLazy",
         config = function() -- each mini submodule should be setup here
             require('mini.indentscope').setup()
             require('mini.comment').setup()

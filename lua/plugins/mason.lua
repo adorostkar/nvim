@@ -5,7 +5,8 @@ local mason_packages = {
     "bash-language-server",
     "clang-format",
     "codelldb",
-    "eslint",
+    "eslint-lsp",
+    "tree-sitter-cli",
 }
 
 local servers = {
@@ -37,6 +38,7 @@ local servers = {
 local M = {
     {
         "mason-org/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate", "MasonUninstall", "MasonLog" },
         opts = {},
         config = function(_, opts)
             require("mason").setup(opts)
@@ -50,10 +52,14 @@ local M = {
     },
     {
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "folke/lazydev.nvim",
             "hrsh7th/cmp-nvim-lsp",
-            "mason-org/mason-lspconfig.nvim",
+            {
+                "mason-org/mason-lspconfig.nvim",
+                dependencies = { "mason-org/mason.nvim" },
+            },
         },
         config = function()
             vim.diagnostic.config({
@@ -80,10 +86,21 @@ local M = {
                     map("<Leader>rn", vim.lsp.buf.rename,                                              "Rename symbol")
                     map("<Leader>ca", vim.lsp.buf.code_action,                                         "Code action")
                     map("<Leader>f",  function()
-                        vim.lsp.buf.format({ bufnr = ev.buf, filter = function(c) return c.name == "null-ls" end })
+                        local clients = vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/formatting" })
+                        local has_none_ls = vim.iter(clients):any(function(client)
+                            return client.name == "null-ls"
+                        end)
+                        if not has_none_ls then
+                            vim.notify("No none-ls formatter is available for this buffer", vim.log.levels.WARN)
+                            return
+                        end
+                        vim.lsp.buf.format({
+                            bufnr = ev.buf,
+                            filter = function(client) return client.name == "null-ls" end,
+                        })
                     end,                                                                               "Format buffer")
-                    map("[d",         vim.diagnostic.goto_prev,                                        "Previous diagnostic")
-                    map("]d",         vim.diagnostic.goto_next,                                        "Next diagnostic")
+                    map("[d",         function() vim.diagnostic.jump({ count = -1 }) end,               "Previous diagnostic")
+                    map("]d",         function() vim.diagnostic.jump({ count = 1 }) end,                "Next diagnostic")
                     map("<Leader>e",  vim.diagnostic.open_float,                                       "Show diagnostic")
 
                     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -98,29 +115,20 @@ local M = {
             })
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require("lspconfig")
 
             require("mason-lspconfig").setup({
                 ensure_installed = vim.tbl_keys(servers),
-                handlers = {
-                    function(server_name)
-                        local server_opts = vim.tbl_deep_extend("force", {
-                            capabilities = capabilities,
-                        }, servers[server_name] or {})
-
-                        lspconfig[server_name].setup(server_opts)
-                    end,
-                },
+                automatic_enable = false,
             })
+
+            for server_name, server_opts in pairs(servers) do
+                vim.lsp.config(server_name, vim.tbl_deep_extend("force", {
+                    capabilities = capabilities,
+                }, server_opts))
+                vim.lsp.enable(server_name)
+            end
         end,
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-        },
     },
 }
 
 return M
--- return {}

@@ -16,20 +16,14 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" This will hide some of the characters or show short forms
-" Usefull for markdown
+" Hide markup characters where syntax rules support concealment.
 set conceallevel=2
 
-if !isdirectory($HOME . "/.cache/nvim")
-    call mkdir($HOME . "/.cache/nvim", "", 0770)
-endif
-
-if !isdirectory($HOME . "/.cache/nvim/undos")
-    call mkdir($HOME . "/.cache/nvim/undos", "", 0700)
-endif
+let s:undo_dir = stdpath('state') . '/undo'
+call mkdir(s:undo_dir, 'p', 0700)
 
 set undofile
-set undodir=$HOME/.cache/nvim/undos
+let &undodir = s:undo_dir
 
 set undolevels=1000
 set undoreload=10000

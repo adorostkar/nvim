@@ -1,51 +1,45 @@
 local M = {
     {
         'mfussenegger/nvim-dap',
-        config = function()
-            local map = vim.keymap.set
-            map('n', "<Leader>db", "<cmd>DapToggleBreakpoint<CR>",          { silent = true, desc = "Toggle breakpoint" })
-            map('n', "<Leader>dr", "<cmd>DapContinue<CR>",                  { silent = true, desc = "Continue / Start" })
-            map('n', "<Leader>dn", "<cmd>DapStepOver<CR>",                  { silent = true, desc = "Step over" })
-            map('n', "<Leader>di", "<cmd>DapStepInto<CR>",                  { silent = true, desc = "Step into" })
-            map('n', "<Leader>do", "<cmd>DapStepOut<CR>",                   { silent = true, desc = "Step out" })
-            map('n', "<Leader>dq", "<cmd>DapTerminate<CR>",                 { silent = true, desc = "Terminate" })
-            map('n', "<Leader>du", function() require("dapui").toggle() end, { silent = true, desc = "Toggle DAP UI" })
-        end,
-    },
-    {
-        "jay-babu/mason-nvim-dap.nvim",
-        event = "VeryLazy",
         dependencies = {
-            "mason-org/mason.nvim",
-            'mfussenegger/nvim-dap'
+            {
+                "jay-babu/mason-nvim-dap.nvim",
+                dependencies = { "mason-org/mason.nvim" },
+                opts = {
+                    ensure_installed = { "codelldb" },
+                    handlers = {},
+                },
+            },
+            {
+                "rcarriga/nvim-dap-ui",
+                dependencies = { "nvim-neotest/nvim-nio" },
+                config = function()
+                    local dap, dapui = require("dap"), require("dapui")
+                    dapui.setup()
+                    dap.listeners.before.attach.dapui_config = function()
+                        dapui.open()
+                    end
+                    dap.listeners.before.launch.dapui_config = function()
+                        dapui.open()
+                    end
+                    dap.listeners.before.event_terminated.dapui_config = function()
+                        dapui.close()
+                    end
+                    dap.listeners.before.event_exited.dapui_config = function()
+                        dapui.close()
+                    end
+                end,
+            },
         },
-        opts = {
-            handlers = {},
+        keys = {
+            { "<Leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
+            { "<Leader>dr", "<cmd>DapContinue<CR>", desc = "Continue / Start" },
+            { "<Leader>dn", "<cmd>DapStepOver<CR>", desc = "Step over" },
+            { "<Leader>di", "<cmd>DapStepInto<CR>", desc = "Step into" },
+            { "<Leader>do", "<cmd>DapStepOut<CR>", desc = "Step out" },
+            { "<Leader>dq", "<cmd>DapTerminate<CR>", desc = "Terminate" },
+            { "<Leader>du", function() require("dapui").toggle() end, desc = "Toggle DAP UI" },
         },
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        event = "VeryLazy",
-        dependencies = {
-            "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio",
-        },
-        config = function()
-            local dap, dapui = require("dap"), require("dapui")
-            dapui.setup()
-            dap.listeners.before.attach.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.launch.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
-        end,
     },
 }
 

@@ -1,10 +1,10 @@
 local M = {
     {
         'stevearc/oil.nvim',
-        config = function()
-            require('oil').setup()
-            vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        end,
+        keys = {
+            { "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
+        },
+        opts = {},
     },
     {
         'tpope/vim-vinegar',
@@ -14,7 +14,6 @@ local M = {
         "nvim-tree/nvim-tree.lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            -- Simple sidebar
             require('nvim-tree').setup({
                 disable_netrw = true,
                 hijack_netrw = true,
@@ -39,10 +38,9 @@ local M = {
                 },
             })
 
-            -- Key mapping
             local map = vim.keymap.set
 
-            map("n", "<C-n>", "<cmd> NvimTreeToggle<CR>", { silent = true })
+            map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle file tree" })
         end,
         cond = false,
     },
