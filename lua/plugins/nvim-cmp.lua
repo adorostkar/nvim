@@ -1,6 +1,7 @@
 local M = {
     {
         'L3MON4D3/LuaSnip',
+        event = "InsertEnter",
         dependencies = { 'rafamadriz/friendly-snippets' },
         config = function()
             require('luasnip.loaders.from_vscode').lazy_load()
@@ -8,10 +9,10 @@ local M = {
     },
     {
         'hrsh7th/nvim-cmp',
+        event = "InsertEnter",
         dependencies = {
             'FelipeLema/cmp-async-path',
             'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
@@ -55,7 +56,6 @@ local M = {
                     { name = 'lazydev', group_index = 0 },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
-                    { name = 'nvim_lua' },
                     { name = 'async_path' },
                 }, {
                     { name = 'buffer' },

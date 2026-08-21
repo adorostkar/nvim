@@ -1,7 +1,8 @@
 local M = {
     {
         'nvimtools/none-ls.nvim',
-        event = "VeryLazy",
+        ft = { "c", "cpp", "objc", "objcpp" },
+        dependencies = { "nvim-lua/plenary.nvim" },
         opts = function()
             return require "configs.null-ls"
         end,
@@ -9,4 +10,3 @@ local M = {
 }
 
 return M
--- return {}

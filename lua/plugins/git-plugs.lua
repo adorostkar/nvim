@@ -5,6 +5,7 @@ local M = {
     },
     { -- shows changes on the gutter
         'lewis6991/gitsigns.nvim',
+        event = { "BufReadPre", "BufNewFile" },
         opts = {},
     },
     {
@@ -20,4 +21,3 @@ local M = {
 }
 
 return M
--- return {}

@@ -1,5 +1,4 @@
 return {
-    -- E X P E R I M E N T S
     -- { 'mhinz/vim-startify' },
     {
         "folke/which-key.nvim",
@@ -41,11 +40,11 @@ return {
     -- C O N F I G U R I N G
     {
         'ntpeters/vim-better-whitespace',
-        event = 'BufRead', -- only load when a buffer is opened
+        event = { 'BufReadPre', 'BufNewFile' },
     },
     {
         "folke/trouble.nvim",
-        cmd = { 'Trouble', 'TroubleClose', 'TroubleRefresh', 'TroubleToggle', },
+        cmd = 'Trouble',
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
     },
@@ -61,10 +60,9 @@ return {
     },
     {
         'junegunn/vim-easy-align',
-        config = function()
-            local map = vim.keymap.set
-            map({'n', 'v'}, "ga", "<Plug>(EasyAlign)", { silent = true })
-        end,
+        keys = {
+            { "ga", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "Easy align" },
+        },
     },
     {
         "dhruvasagar/vim-table-mode",

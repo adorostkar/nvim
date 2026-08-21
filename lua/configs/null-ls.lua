@@ -1,4 +1,4 @@
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
 local null_ls = require('null-ls')
 
 local opts = {
@@ -6,7 +6,7 @@ local opts = {
         null_ls.builtins.formatting.clang_format,
     },
     on_attach = function(client, bufnr)
-        if client.supports_method('textDocument/formatting') then
+        if client:supports_method('textDocument/formatting', bufnr) then
             vim.api.nvim_clear_autocmds({
                 group = augroup,
                 buffer = bufnr,
@@ -17,6 +17,7 @@ local opts = {
                 callback = function()
                     vim.lsp.buf.format({
                         bufnr = bufnr,
+                        timeout_ms = 3000,
                         filter = function(c) return c.name == "null-ls" end,
                     })
                 end,
